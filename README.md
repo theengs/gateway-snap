@@ -59,4 +59,8 @@ snap connect theengs-gateway:bluez-client :bluez
 snap restart theengs-gateway
 ```
 
-Theengs Gateway should now run.
+Theengs Gateway should now run as a service. If you want it to start automatically after booting your Linux distribution, enable the service with:
+
+```shell
+sudo snap start --enable theengs-gateway
+```
