@@ -1,0 +1,34 @@
+#!/bin/sh
+# shellcheck source=scripts/bin/management-script
+. "$SNAP/bin/management-script"
+
+HOST="$(host)"
+export HOST
+PORT="$(port)"
+export PORT
+USER="$(user)"
+export USER
+PASS="$(pass)"
+export PASS
+PUB_TOPIC="$(pub_topic)"
+export PUB_TOPIC
+SUB_TOPIC="$(sub_topic)"
+export SUB_TOPIC
+SCAN_DUR="$(scan_dur)"
+export SCAN_DUR
+TIME_BETWEEN="$(time_between)"
+export TIME_BETWEEN
+LOG_LEVEL="$(log_level)"
+export LOG_LEVEL
+DISCOVERY_TOPIC="$(discovery_topic)"
+export DISCOVERY_TOPIC
+DISCOVERY="$(discovery)"
+export DISCOVERY
+DISCOVERY_DEVICE_NAME="$(discovery_device_name)"
+export DISCOVERY_DEVICE_NAME
+DISCOVERY_FILTER="$(discovery_filter)"
+export DISCOVERY_FILTER
+ADAPTER="$(adapter)"
+export ADAPTER
+
+"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER"

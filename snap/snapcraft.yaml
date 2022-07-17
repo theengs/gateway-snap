@@ -1,0 +1,49 @@
+name: theengs-gateway
+summary: Multi-platform BLE to MQTT gateway leveraging Theengs Decoder
+description: |
+    Theengs Gateway is a multi-platform, BLE to MQTT gateway that leverages the
+    Theengs Decoder library. It retrieves data from a wide range of BLE
+    sensors, including the LYWSD03MMC, CGD1, CGP1W, H5072, H5075, H5102, TH1,
+    TH2, BBQ, CGH1, CGDK2, CGPR1, RuuviTag, WS02, WS08, TPMS, MiScale, LYWSD02,
+    LYWSDCGQ, and Mi Flora. It translates these data into a readable JSON
+    format and pushes those to an MQTT broker.
+icon: logo-Theengs.png
+version: 0.3.0
+license: GPL-3.0
+contact: koen@vervloesem.eu
+website: https://github.com/theengs/gateway-snap
+issues: https://github.com/theengs/gateway-snap/issues
+grade: stable
+confinement: strict
+base: core22
+architectures:
+  - build-on: [amd64, arm64, armhf]
+
+parts:
+  theengs-gateway:
+    plugin: python
+    source: https://github.com/theengs/gateway.git
+    source-commit: 085eb4753fdd4fab2ceb2453af19a64ad984eabb  # Temporary workaround
+    override-pull: |
+      snapcraftctl pull
+      sed -i "s/version_tag/$SNAPCRAFT_PROJECT_VERSION/g" $SNAPCRAFT_PART_SRC/setup.py
+    build-packages:
+      - build-essential
+    stage-packages:
+      - bluez  # Needed by Bleak for the bluetoothctl command
+  scripts:
+    plugin: dump
+    source: scripts
+
+apps:
+  theengs-gateway:
+    command: bin/theengs-gateway-wrapper
+    daemon: simple
+    install-mode: disable  # Let the user first configure the gateway
+    plugs:
+      - network
+      - bluez-client
+
+plugs:
+  bluez-client:
+    interface: bluez
