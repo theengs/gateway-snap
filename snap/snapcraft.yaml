@@ -1,4 +1,5 @@
 name: theengs-gateway
+title: Theengs Gateway
 summary: Multi-platform BLE to MQTT gateway leveraging Theengs Decoder
 description: |
     Theengs Gateway is a multi-platform, BLE to MQTT gateway that leverages the
@@ -13,6 +14,7 @@ license: GPL-3.0
 contact: koen@vervloesem.eu
 website: https://github.com/theengs/gateway-snap
 issues: https://github.com/theengs/gateway-snap/issues
+
 grade: stable
 confinement: strict
 base: core22
