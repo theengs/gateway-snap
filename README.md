@@ -14,13 +14,13 @@ You can install it on amd64 and arm64 systems as:
 snap install theengs-gateway
 ```
 
-If you're tunning this on Ubuntu Core on a Raspberry Pi, also install the following snaps for Bluetooth:
+If you're running this on Ubuntu Core on a Raspberry Pi, also install the following snaps for Bluetooth:
 
 ```shell
 snap install bluez pi-bluetooth
 ```
 
-## Configure
+## How to configure
 
 You can show the snap's configuration with:
 
