@@ -8,7 +8,7 @@
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/theengs-gateway)
 
-You can install it on amd64 and arm64 systems as:
+You can install the snap on amd64, arm64 and armhf systems with:
 
 ```shell
 snap install theengs-gateway
