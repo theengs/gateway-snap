@@ -16,4 +16,4 @@ jobs:
         env:
           SHELLCHECK_OPTS: -x
         with:
-          additional_files: 'snap/hooks/*'
+          additional_files: 'snap/hooks/configure'
