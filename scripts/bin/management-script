@@ -21,7 +21,7 @@ adapter()
         ble_adapter="$(snapctl get ble.adapter)"
         if [ -z "$ble_adapter" ]; then
                 ble_adapter="$DEFAULT_ADAPTER"
-                set_adapter $ble_adapter
+                set_adapter "$ble_adapter"
         fi
         echo "$ble_adapter"
 }
@@ -37,7 +37,7 @@ scan_dur()
         ble_scan_duration="$(snapctl get ble.scan-duration)"
         if [ -z "$ble_scan_duration" ]; then
                 ble_scan_duration="$DEFAULT_SCAN_DUR"
-                set_scan_dur $ble_scan_duration
+                set_scan_dur "$ble_scan_duration"
         fi
         echo "$ble_scan_duration"
 }
