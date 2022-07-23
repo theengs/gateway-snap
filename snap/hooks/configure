@@ -2,121 +2,107 @@
 # shellcheck source=scripts/bin/management-script
 . "$SNAP/bin/management-script"
 
-handle_adapter_config()
-{
-        adapter="$(adapter)"
-        set_adapter "$adapter"
-        snapctl restart theengs-gateway
+handle_adapter_config() {
+	adapter="$(adapter)"
+	set_adapter "$adapter"
+	snapctl restart theengs-gateway
 }
 handle_adapter_config
 
-handle_scan_dur_config()
-{
-        scan_dur="$(scan_dur)"
-        set_scan_dur "$scan_dur"
-        snapctl restart theengs-gateway
+handle_scan_dur_config() {
+	scan_dur="$(scan_dur)"
+	set_scan_dur "$scan_dur"
+	snapctl restart theengs-gateway
 }
 handle_scan_dur_config
 
-handle_time_between_config()
-{
-        time_between="$(time_between)"
-        set_time_between "$time_between"
-        snapctl restart theengs-gateway
+handle_time_between_config() {
+	time_between="$(time_between)"
+	set_time_between "$time_between"
+	snapctl restart theengs-gateway
 }
 handle_time_between_config
 
-handle_discovery_config()
-{
-        discovery="$(discovery)"
-        set_discovery "$discovery"
-        snapctl restart theengs-gateway
+handle_discovery_config() {
+	discovery="$(discovery)"
+	set_discovery "$discovery"
+	snapctl restart theengs-gateway
 }
 handle_discovery_config
 
-handle_discovery_device_name_config()
-{
-        discovery_device_name="$(discovery_device_name)"
-        set_discovery_device_name "$discovery_device_name"
-        snapctl restart theengs-gateway
+handle_discovery_device_name_config() {
+	discovery_device_name="$(discovery_device_name)"
+	set_discovery_device_name "$discovery_device_name"
+	snapctl restart theengs-gateway
 }
 handle_discovery_device_name_config
 
-handle_discovery_filter_config()
-{
-        discovery_filter="$(discovery_filter)"
-        set_discovery_filter "$discovery_filter"
-        snapctl restart theengs-gateway
+handle_discovery_filter_config() {
+	discovery_filter="$(discovery_filter)"
+	set_discovery_filter "$discovery_filter"
+	snapctl restart theengs-gateway
 }
 handle_discovery_filter_config
 
-handle_discovery_topic_config()
-{
-        discovery_topic="$(discovery_topic)"
-        set_discovery_topic "$discovery_topic"
-        snapctl restart theengs-gateway
+handle_discovery_topic_config() {
+	discovery_topic="$(discovery_topic)"
+	set_discovery_topic "$discovery_topic"
+	snapctl restart theengs-gateway
 }
 handle_discovery_topic_config
 
-handle_log_level_config()
-{
-        log_level="$(log_level)"
-        set_log_level "$log_level"
-        snapctl restart theengs-gateway
+handle_log_level_config() {
+	log_level="$(log_level)"
+	set_log_level "$log_level"
+	snapctl restart theengs-gateway
 }
 handle_log_level_config
 
-handle_host_config()
-{
-        host="$(host)"
-        set_host "$host"
-        snapctl restart theengs-gateway
+handle_host_config() {
+	host="$(host)"
+	set_host "$host"
+	snapctl restart theengs-gateway
 }
 handle_host_config
 
-handle_pass_config()
-{
-        pass="$(pass)"
-        set_pass "$pass"
-        snapctl restart theengs-gateway
+handle_pass_config() {
+	pass="$(pass)"
+	set_pass "$pass"
+	snapctl restart theengs-gateway
 }
 handle_pass_config
 
-handle_port_config()
-{
-        port="$(port)"
+handle_port_config() {
+	port="$(port)"
 
-        # Validate MQTT port
-        if ! expr "$port" : '^[0-9]\+$' > /dev/null; then
-                echo "\"$port\" is not a valid MQTT port" >&2
-                return 1
-        fi
+	# Validate MQTT port
+	if ! expr "$port" : '^[0-9]\+$' >/dev/null; then
+		echo "\"$port\" is not a valid MQTT port" >&2
+		return 1
+	fi
 
-        set_port "$port"
-        snapctl restart theengs-gateway
+	set_port "$port"
+	snapctl restart theengs-gateway
 }
 handle_port_config
 
-handle_pub_topic_config()
-{
-        pub_topic="$(pub_topic)"
-        set_pub_topic "$pub_topic"
-        snapctl restart theengs-gateway
+handle_pub_topic_config() {
+	pub_topic="$(pub_topic)"
+	set_pub_topic "$pub_topic"
+	snapctl restart theengs-gateway
 }
 handle_pub_topic_config
 
-handle_sub_topic_config()
-{
-        sub_topic="$(sub_topic)"
-        set_sub_topic "$sub_topic"
-        snapctl restart theengs-gateway
+handle_sub_topic_config() {
+	sub_topic="$(sub_topic)"
+	set_sub_topic "$sub_topic"
+	snapctl restart theengs-gateway
 }
 handle_sub_topic_config
 
-handle_user_config()
-{
-        user="$(user)"
-        set_user "$user"
-        snapctl restart theengs-gateway
+handle_user_config() {
+	user="$(user)"
+	set_user "$user"
+	snapctl restart theengs-gateway
 }
 handle_user_config

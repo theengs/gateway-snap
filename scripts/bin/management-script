@@ -16,225 +16,197 @@ DEFAULT_SUB_TOPIC="home/TheengsGateway/+"
 DEFAULT_USER=""
 
 # ADAPTER
-adapter()
-{
-        ble_adapter="$(snapctl get ble.adapter)"
-        if [ -z "$ble_adapter" ]; then
-                ble_adapter="$DEFAULT_ADAPTER"
-                set_adapter $ble_adapter
-        fi
-        echo "$ble_adapter"
+adapter() {
+	ble_adapter="$(snapctl get ble.adapter)"
+	if [ -z "$ble_adapter" ]; then
+		ble_adapter="$DEFAULT_ADAPTER"
+		set_adapter "$ble_adapter"
+	fi
+	echo "$ble_adapter"
 }
 
-set_adapter()
-{
-        snapctl set ble.adapter="$1"
+set_adapter() {
+	snapctl set ble.adapter="$1"
 }
 
 # SCAN_DUR
-scan_dur()
-{
-        ble_scan_duration="$(snapctl get ble.scan-duration)"
-        if [ -z "$ble_scan_duration" ]; then
-                ble_scan_duration="$DEFAULT_SCAN_DUR"
-                set_scan_dur $ble_scan_duration
-        fi
-        echo "$ble_scan_duration"
+scan_dur() {
+	ble_scan_duration="$(snapctl get ble.scan-duration)"
+	if [ -z "$ble_scan_duration" ]; then
+		ble_scan_duration="$DEFAULT_SCAN_DUR"
+		set_scan_dur "$ble_scan_duration"
+	fi
+	echo "$ble_scan_duration"
 }
 
-set_scan_dur()
-{
-        snapctl set ble.scan-duration="$1"
+set_scan_dur() {
+	snapctl set ble.scan-duration="$1"
 }
 
 # TIME_BETWEEN
-time_between()
-{
-        ble_time_between="$(snapctl get ble.time-between)"
-        if [ -z "$ble_time_between" ]; then
-                ble_time_between="$DEFAULT_TIME_BETWEEN"
-                set_time_between $ble_time_between
-        fi
-        echo "$ble_time_between"
+time_between() {
+	ble_time_between="$(snapctl get ble.time-between)"
+	if [ -z "$ble_time_between" ]; then
+		ble_time_between="$DEFAULT_TIME_BETWEEN"
+		set_time_between "$ble_time_between"
+	fi
+	echo "$ble_time_between"
 }
 
-set_time_between()
-{
-        snapctl set ble.time-between="$1"
+set_time_between() {
+	snapctl set ble.time-between="$1"
 }
 
 # DISCOVERY
-discovery()
-{
-        ha_discovery="$(snapctl get ha.discovery)"
-        if [ -z "$ha_discovery" ]; then
-                ha_discovery="$DEFAULT_DISCOVERY"
-                set_discovery $ha_discovery
-        fi
-        echo "$ha_discovery"
+discovery() {
+	ha_discovery="$(snapctl get ha.discovery)"
+	if [ -z "$ha_discovery" ]; then
+		ha_discovery="$DEFAULT_DISCOVERY"
+		set_discovery "$ha_discovery"
+	fi
+	echo "$ha_discovery"
 }
 
-set_discovery()
-{
-        snapctl set ha.discovery="$1"
+set_discovery() {
+	snapctl set ha.discovery="$1"
 }
 
 # DISCOVERY_DEVICE_NAME
-discovery_device_name()
-{
-        ha_discovery_device_name="$(snapctl get ha.discovery-device-name)"
-        if [ -z "$ha_discovery_device_name" ]; then
-                ha_discovery_device_name="$DEFAULT_DISCOVERY_DEVICE_NAME"
-                set_discovery_device_name $ha_discovery_device_name
-        fi
-        echo "$ha_discovery_device_name"
+discovery_device_name() {
+	ha_discovery_device_name="$(snapctl get ha.discovery-device-name)"
+	if [ -z "$ha_discovery_device_name" ]; then
+		ha_discovery_device_name="$DEFAULT_DISCOVERY_DEVICE_NAME"
+		set_discovery_device_name "$ha_discovery_device_name"
+	fi
+	echo "$ha_discovery_device_name"
 }
 
-set_discovery_device_name()
-{
-        snapctl set ha.discovery-device-name="$1"
+set_discovery_device_name() {
+	snapctl set ha.discovery-device-name="$1"
 }
 
 # DISCOVERY_FILTER
-discovery_filter()
-{
-        ha_discovery_filter="$(snapctl get ha.discovery-filter)"
-        if [ -z "$ha_discovery_filter" ]; then
-                ha_discovery_filter="$DEFAULT_DISCOVERY_FILTER"
-                set_discovery_filter $ha_discovery_filter
-        fi
-        echo "$ha_discovery_filter"
+discovery_filter() {
+	ha_discovery_filter="$(snapctl get ha.discovery-filter)"
+	if [ -z "$ha_discovery_filter" ]; then
+		ha_discovery_filter="$DEFAULT_DISCOVERY_FILTER"
+		set_discovery_filter "$ha_discovery_filter"
+	fi
+	echo "$ha_discovery_filter"
 }
 
-set_discovery_filter()
-{
-        snapctl set ha.discovery-filter="$1"
+set_discovery_filter() {
+	snapctl set ha.discovery-filter="$1"
 }
 
 # DISCOVERY_TOPIC
-discovery_topic()
-{
-        ha_discovery_topic="$(snapctl get ha.discovery-topic)"
-        if [ -z "$ha_discovery_topic" ]; then
-                ha_discovery_topic="$DEFAULT_DISCOVERY_TOPIC"
-                set_discovery_topic $ha_discovery_topic
-        fi
-        echo "$ha_discovery_topic"
+discovery_topic() {
+	ha_discovery_topic="$(snapctl get ha.discovery-topic)"
+	if [ -z "$ha_discovery_topic" ]; then
+		ha_discovery_topic="$DEFAULT_DISCOVERY_TOPIC"
+		set_discovery_topic "$ha_discovery_topic"
+	fi
+	echo "$ha_discovery_topic"
 }
 
-set_discovery_topic()
-{
-        snapctl set ha.discovery-topic="$1"
+set_discovery_topic() {
+	snapctl set ha.discovery-topic="$1"
 }
 
 # LOG_LEVEL
-log_level()
-{
-        ll="$(snapctl get log-level)"
-        if [ -z "$ll" ]; then
-                ll="$DEFAULT_LOG_LEVEL"
-                set_log_level $ll
-        fi
-        echo "$ll"
+log_level() {
+	ll="$(snapctl get log-level)"
+	if [ -z "$ll" ]; then
+		ll="$DEFAULT_LOG_LEVEL"
+		set_log_level "$ll"
+	fi
+	echo "$ll"
 }
 
-set_log_level()
-{
-        snapctl set log-level="$1"
+set_log_level() {
+	snapctl set log-level="$1"
 }
 
 # HOST
-host()
-{
-        mqtt_host="$(snapctl get mqtt.host)"
-        if [ -z "$mqtt_host" ]; then
-                mqtt_host="$DEFAULT_HOST"
-                set_host $mqtt_host
-        fi
-        echo "$mqtt_host"
+host() {
+	mqtt_host="$(snapctl get mqtt.host)"
+	if [ -z "$mqtt_host" ]; then
+		mqtt_host="$DEFAULT_HOST"
+		set_host "$mqtt_host"
+	fi
+	echo "$mqtt_host"
 }
 
-set_host()
-{
-        snapctl set mqtt.host="$1"
+set_host() {
+	snapctl set mqtt.host="$1"
 }
 
 # PASS
-pass()
-{
-        mqtt_pass="$(snapctl get mqtt.pass)"
-        if [ -z "$mqtt_pass" ]; then
-                mqtt_pass="$DEFAULT_PASS"
-                set_pass $mqtt_pass
-        fi
-        echo "$mqtt_pass"
+pass() {
+	mqtt_pass="$(snapctl get mqtt.pass)"
+	if [ -z "$mqtt_pass" ]; then
+		mqtt_pass="$DEFAULT_PASS"
+		set_pass "$mqtt_pass"
+	fi
+	echo "$mqtt_pass"
 }
 
-set_pass()
-{
-        snapctl set mqtt.pass="$1"
+set_pass() {
+	snapctl set mqtt.pass="$1"
 }
 
 # PORT
-port()
-{
-        mqtt_port="$(snapctl get mqtt.port)"
-        if [ -z "$mqtt_port" ]; then
-                mqtt_port="$DEFAULT_PORT"
-                set_port $mqtt_port
-        fi
-        echo "$mqtt_port"
+port() {
+	mqtt_port="$(snapctl get mqtt.port)"
+	if [ -z "$mqtt_port" ]; then
+		mqtt_port="$DEFAULT_PORT"
+		set_port "$mqtt_port"
+	fi
+	echo "$mqtt_port"
 }
 
-set_port()
-{
-        snapctl set mqtt.port="$1"
+set_port() {
+	snapctl set mqtt.port="$1"
 }
 
 # PUB_TOPIC
-pub_topic()
-{
-        mqtt_pub_topic="$(snapctl get mqtt.pub-topic)"
-        if [ -z "$mqtt_pub_topic" ]; then
-                mqtt_pub_topic="$DEFAULT_PUB_TOPIC"
-                set_pub_topic $mqtt_pub_topic
-        fi
-        echo "$mqtt_pub_topic"
+pub_topic() {
+	mqtt_pub_topic="$(snapctl get mqtt.pub-topic)"
+	if [ -z "$mqtt_pub_topic" ]; then
+		mqtt_pub_topic="$DEFAULT_PUB_TOPIC"
+		set_pub_topic "$mqtt_pub_topic"
+	fi
+	echo "$mqtt_pub_topic"
 }
 
-set_pub_topic()
-{
-        snapctl set mqtt.pub-topic="$1"
+set_pub_topic() {
+	snapctl set mqtt.pub-topic="$1"
 }
 
 # SUB_TOPIC
-sub_topic()
-{
-        mqtt_sub_topic="$(snapctl get mqtt.sub-topic)"
-        if [ -z "$mqtt_sub_topic" ]; then
-                mqtt_sub_topic="$DEFAULT_SUB_TOPIC"
-                set_sub_topic $mqtt_sub_topic
-        fi
-        echo "$mqtt_sub_topic"
+sub_topic() {
+	mqtt_sub_topic="$(snapctl get mqtt.sub-topic)"
+	if [ -z "$mqtt_sub_topic" ]; then
+		mqtt_sub_topic="$DEFAULT_SUB_TOPIC"
+		set_sub_topic "$mqtt_sub_topic"
+	fi
+	echo "$mqtt_sub_topic"
 }
 
-set_sub_topic()
-{
-        snapctl set mqtt.sub-topic="$1"
+set_sub_topic() {
+	snapctl set mqtt.sub-topic="$1"
 }
 
 # USER
-user()
-{
-        mqtt_user="$(snapctl get mqtt.user)"
-        if [ -z "$mqtt_user" ]; then
-                mqtt_user="$DEFAULT_USER"
-                set_user $mqtt_user
-        fi
-        echo "$mqtt_user"
+user() {
+	mqtt_user="$(snapctl get mqtt.user)"
+	if [ -z "$mqtt_user" ]; then
+		mqtt_user="$DEFAULT_USER"
+		set_user "$mqtt_user"
+	fi
+	echo "$mqtt_user"
 }
 
-set_user()
-{
-        snapctl set mqtt.user="$1"
+set_user() {
+	snapctl set mqtt.user="$1"
 }
