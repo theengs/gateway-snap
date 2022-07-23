@@ -7,13 +7,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Yamllint
+      - name: Check YAML files
         uses: ibiqlik/action-yamllint@v3
         with:
           config_file: .yamllint.yml
-      - name: Shellcheck
-        uses: ludeeus/action-shellcheck@1.1.0
+      - name: Check shell scripts
+        uses: luizm/action-sh-checker@0.5.0
         env:
           SHELLCHECK_OPTS: -x
         with:
-          additional_files: 'snap/hooks/configure'
+          sh_checker_checkbashisms_enable: true
