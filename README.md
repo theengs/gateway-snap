@@ -1,3 +1,6 @@
+[![Build status](https://github.com/theengs/gateway-snap/workflows/Build/badge.svg)](https://github.com/theengs/gateway-snap/actions)
+[![Check status](https://github.com/theengs/gateway-snap/workflows/Check/badge.svg)](https://github.com/theengs/gateway-snap/actions)
+[![GitHub license](https://img.shields.io/github/theengs/gateway-snap.svg)](https://github.com/theengs/gateway-snap/blob/development/LICENSE)
 [![theengs-gateway](https://snapcraft.io/theengs-gateway/badge.svg)](https://snapcraft.io/theengs-gateway)
 
 # Theengs Gateway Snap

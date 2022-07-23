@@ -1,6 +1,6 @@
 ---
-name: Check code
-on: [push, pull_request]  # yamllint disable-line rule:truthy
+name: Check
+on: push  # yamllint disable-line rule:truthy
 jobs:
   check:
     runs-on: ubuntu-latest

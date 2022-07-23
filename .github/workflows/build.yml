@@ -1,0 +1,14 @@
+---
+name: Build
+on: push  # yamllint disable-line rule:truthy
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build snap
+        uses: snapcore/action-build@v1
+        id: snapcraft
+      - name: Install snap
+        run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
