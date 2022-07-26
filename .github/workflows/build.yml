@@ -10,5 +10,9 @@ jobs:
       - name: Build snap
         uses: snapcore/action-build@v1
         id: snapcraft
+      - name: Check snap for errors
+        run: |
+          sudo snap install review-tools
+          snap-review ${{ steps.snapcraft.outputs.snap }}
       - name: Install snap
         run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
