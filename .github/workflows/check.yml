@@ -1,5 +1,5 @@
 ---
-name: Check
+name: Checks
 on: push  # yamllint disable-line rule:truthy
 jobs:
   check:
