@@ -10,6 +10,14 @@ jobs:
       - name: Build snap
         uses: snapcore/action-build@v1
         id: snapcraft
+        with:
+          snapcraft-channel: 7.x/candidate
+      - name: Archive logs as artifacts
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: logs
+          path: /home/runner/.cache/snapcraft/log/*.log
       - name: Check snap for errors
         run: |
           sudo snap install review-tools
