@@ -13,6 +13,7 @@ jobs:
         with:
           snapcraft-channel: 7.x/candidate
       - name: Archive logs as artifacts
+        if: success() || failure()
         uses: actions/upload-artifact@v3
         with:
           name: logs
