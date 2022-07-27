@@ -12,6 +12,11 @@ jobs:
         id: snapcraft
         with:
           snapcraft-channel: 7.x/candidate
+      - name: Archive logs as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: logs
+          path: /home/runner/.cache/snapcraft/log/*.log
       - name: Check snap for errors
         run: |
           sudo snap install review-tools
