@@ -21,8 +21,11 @@ confinement: strict
 base: core22
 architectures:
   - build-on: amd64
-  - build-on: arm64
-  - build-on: armhf
+    build-for: amd64
+  - build-on: [amd64, arm64]
+    build-for: arm64
+  - build-on: [amd64, armhf]
+    build-for: armhf
 
 parts:
   theengs-gateway:
