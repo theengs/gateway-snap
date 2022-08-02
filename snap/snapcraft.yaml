@@ -41,8 +41,6 @@ parts:
       - python3-skbuild
     build-environment:
       - PARTS_PYTHON_VENV_ARGS: "--system-site-packages"
-    stage-packages:
-      - bluez  # Needed by Bleak for the bluetoothctl command
   scripts:
     plugin: dump
     source: scripts
