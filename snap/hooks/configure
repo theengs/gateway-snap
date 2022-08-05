@@ -6,9 +6,9 @@ handle_adapter_config() {
 	adapter="$(adapter)"
 	previous_adapter="$(previous_adapter)"
 
-    if [ "$adapter" = "$previous_adapter" ]; then
-        return 0
-    fi
+	if [ "$adapter" = "$previous_adapter" ]; then
+		return 0
+	fi
 
 	set_adapter "$adapter"
 	set_previous_adapter "$adapter"
@@ -21,9 +21,9 @@ handle_scan_dur_config() {
 	scan_dur="$(scan_dur)"
 	previous_scan_dur="$(previous_scan_dur)"
 
-    if [ "$scan_dur" = "$previous_scan_dur" ]; then
-        return 0
-    fi
+	if [ "$scan_dur" = "$previous_scan_dur" ]; then
+		return 0
+	fi
 
 	set_scan_dur "$scan_dur"
 	set_previous_scan_dur "$scan_dur"
@@ -36,9 +36,9 @@ handle_time_between_config() {
 	time_between="$(time_between)"
 	previous_time_between="$(previous_time_between)"
 
-    if [ "$time_between" = "$previous_time_between" ]; then
-        return 0
-    fi
+	if [ "$time_between" = "$previous_time_between" ]; then
+		return 0
+	fi
 
 	set_time_between "$time_between"
 	set_previous_time_between "$time_between"
@@ -51,9 +51,9 @@ handle_discovery_config() {
 	discovery="$(discovery)"
 	previous_discovery="$(previous_discovery)"
 
-    if [ "$discovery" = "$previous_discovery" ]; then
-        return 0
-    fi
+	if [ "$discovery" = "$previous_discovery" ]; then
+		return 0
+	fi
 
 	set_discovery "$discovery"
 	set_previous_discovery "$discovery"
@@ -66,9 +66,9 @@ handle_discovery_device_name_config() {
 	discovery_device_name="$(discovery_device_name)"
 	previous_discovery_device_name="$(previous_discovery_device_name)"
 
-    if [ "$discovery_device_name" = "$previous_discovery_device_name" ]; then
-        return 0
-    fi
+	if [ "$discovery_device_name" = "$previous_discovery_device_name" ]; then
+		return 0
+	fi
 
 	set_discovery_device_name "$discovery_device_name"
 	set_previous_discovery_device_name "$discovery_device_name"
@@ -80,9 +80,9 @@ handle_discovery_filter_config() {
 	discovery_filter="$(discovery_filter)"
 	previous_discovery_filter="$(previous_discovery_filter)"
 
-    if [ "$discovery_filter" = "$previous_discovery_filter" ]; then
-        return 0
-    fi
+	if [ "$discovery_filter" = "$previous_discovery_filter" ]; then
+		return 0
+	fi
 
 	set_discovery_filter "$discovery_filter"
 	set_previous_discovery_filter "$discovery_filter"
@@ -95,9 +95,9 @@ handle_discovery_topic_config() {
 	discovery_topic="$(discovery_topic)"
 	previous_discovery_topic="$(previous_discovery_topic)"
 
-    if [ "$discovery_topic" = "$previous_discovery_topic" ]; then
-        return 0
-    fi
+	if [ "$discovery_topic" = "$previous_discovery_topic" ]; then
+		return 0
+	fi
 
 	set_discovery_topic "$discovery_topic"
 	set_previous_discovery_topic "$discovery_topic"
@@ -110,9 +110,9 @@ handle_log_level_config() {
 	log_level="$(log_level)"
 	previous_log_level="$(previous_log_level)"
 
-    if [ "$log_level" = "$previous_log_level" ]; then
-        return 0
-    fi
+	if [ "$log_level" = "$previous_log_level" ]; then
+		return 0
+	fi
 
 	set_log_level "$log_level"
 	set_previous_log_level "$log_level"
@@ -125,9 +125,9 @@ handle_host_config() {
 	host="$(host)"
 	previous_host="$(previous_host)"
 
-    if [ "$host" = "$previous_host" ]; then
-        return 0
-    fi
+	if [ "$host" = "$previous_host" ]; then
+		return 0
+	fi
 
 	set_host "$host"
 	set_previous_host "$host"
@@ -140,9 +140,9 @@ handle_pass_config() {
 	pass="$(pass)"
 	previous_pass="$(previous_pass)"
 
-    if [ "$pass" = "$previous_pass" ]; then
-        return 0
-    fi
+	if [ "$pass" = "$previous_pass" ]; then
+		return 0
+	fi
 
 	set_pass "$pass"
 	set_previous_pass "$pass"
@@ -155,9 +155,9 @@ handle_port_config() {
 	port="$(port)"
 	previous_port="$(previous_port)"
 
-    if [ "$port" = "$previous_port" ]; then
-        return 0
-    fi
+	if [ "$port" = "$previous_port" ]; then
+		return 0
+	fi
 
 	# Validate MQTT port
 	if ! expr "$port" : '^[0-9]\+$' >/dev/null; then
@@ -176,9 +176,9 @@ handle_pub_topic_config() {
 	pub_topic="$(pub_topic)"
 	previous_pub_topic="$(previous_pub_topic)"
 
-    if [ "$pub_topic" = "$previous_pub_topic" ]; then
-        return 0
-    fi
+	if [ "$pub_topic" = "$previous_pub_topic" ]; then
+		return 0
+	fi
 
 	set_pub_topic "$pub_topic"
 	set_previous_pub_topic "$pub_topic"
@@ -191,9 +191,9 @@ handle_sub_topic_config() {
 	sub_topic="$(sub_topic)"
 	previous_sub_topic="$(previous_sub_topic)"
 
-    if [ "$sub_topic" = "$previous_sub_topic" ]; then
-        return 0
-    fi
+	if [ "$sub_topic" = "$previous_sub_topic" ]; then
+		return 0
+	fi
 
 	set_sub_topic "$sub_topic"
 	set_previous_sub_topic "$sub_topic"
@@ -206,9 +206,9 @@ handle_user_config() {
 	user="$(user)"
 	previous_user="$(previous_user)"
 
-    if [ "$user" = "$previous_user" ]; then
-        return 0
-    fi
+	if [ "$user" = "$previous_user" ]; then
+		return 0
+	fi
 
 	set_user "$user"
 	set_previous_user "$user"

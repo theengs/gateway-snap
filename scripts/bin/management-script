@@ -31,7 +31,7 @@ set_adapter() {
 }
 
 previous_adapter() {
-    snapctl get private.ble.adapter
+	snapctl get private.ble.adapter
 }
 
 set_previous_adapter() {
