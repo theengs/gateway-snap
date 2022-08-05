@@ -25,6 +25,18 @@ snap install bluez pi-bluetooth
 
 ## How to configure
 
+First give the snap access to Bluetooth:
+
+```shell
+snap connect theengs-gateway:bluez-client :bluez
+```
+
+If you're running the snap on Ubuntu Core, this command needs to be:
+
+```shell
+snap connect theengs-gateway:bluez-client bluez:service
+```
+
 You can show the snap's configuration with:
 
 ```shell
@@ -61,25 +73,7 @@ snap set theengs-gateway mqtt.host=MYBROKER mqtt.user=MYUSER mqtt.pass=MYPASS
 
 Have a look at [Theengs Gateway's documentation](https://gateway.theengs.io/use/use.html#details-options) for the meaning of all configuration options.
 
-Then give the snap access to Bluetooth:
-
-```shell
-snap connect theengs-gateway:bluez-client :bluez
-```
-
-If you're running the snap on Ubuntu Core, this command needs to be:
-
-```shell
-snap connect theengs-gateway:bluez-client bluez:service
-```
-
-After this, restart the service:
-
-```
-snap restart theengs-gateway
-```
-
-Theengs Gateway should now run as a service. If you want it to start automatically after booting your Linux distribution, enable the service with:
+After changing the configuration, Theengs Gateway should now run as a service. If you want it to start automatically after booting your Linux distribution, enable the service with:
 
 ```shell
 snap start --enable theengs-gateway
