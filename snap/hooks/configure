@@ -2,6 +2,10 @@
 # shellcheck source=scripts/bin/management-script
 . "$SNAP/bin/management-script"
 
+restart_gateway_if_running() {
+	LANG=C snap services theengs-gateway | grep inactive || snapctl restart theengs-gateway
+}
+
 handle_adapter_config() {
 	adapter="$(adapter)"
 	previous_adapter="$(previous_adapter)"
@@ -13,7 +17,7 @@ handle_adapter_config() {
 	set_adapter "$adapter"
 	set_previous_adapter "$adapter"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_adapter_config
 
@@ -28,7 +32,7 @@ handle_scan_dur_config() {
 	set_scan_dur "$scan_dur"
 	set_previous_scan_dur "$scan_dur"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_scan_dur_config
 
@@ -43,7 +47,7 @@ handle_time_between_config() {
 	set_time_between "$time_between"
 	set_previous_time_between "$time_between"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_time_between_config
 
@@ -58,7 +62,7 @@ handle_discovery_config() {
 	set_discovery "$discovery"
 	set_previous_discovery "$discovery"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_discovery_config
 
@@ -72,7 +76,7 @@ handle_discovery_device_name_config() {
 
 	set_discovery_device_name "$discovery_device_name"
 	set_previous_discovery_device_name "$discovery_device_name"
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_discovery_device_name_config
 
@@ -87,7 +91,7 @@ handle_discovery_filter_config() {
 	set_discovery_filter "$discovery_filter"
 	set_previous_discovery_filter "$discovery_filter"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_discovery_filter_config
 
@@ -102,7 +106,7 @@ handle_discovery_topic_config() {
 	set_discovery_topic "$discovery_topic"
 	set_previous_discovery_topic "$discovery_topic"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_discovery_topic_config
 
@@ -117,7 +121,7 @@ handle_log_level_config() {
 	set_log_level "$log_level"
 	set_previous_log_level "$log_level"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_log_level_config
 
@@ -132,7 +136,7 @@ handle_host_config() {
 	set_host "$host"
 	set_previous_host "$host"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_host_config
 
@@ -147,7 +151,7 @@ handle_pass_config() {
 	set_pass "$pass"
 	set_previous_pass "$pass"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_pass_config
 
@@ -168,7 +172,7 @@ handle_port_config() {
 	set_port "$port"
 	set_previous_port "$port"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_port_config
 
@@ -183,7 +187,7 @@ handle_pub_topic_config() {
 	set_pub_topic "$pub_topic"
 	set_previous_pub_topic "$pub_topic"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_pub_topic_config
 
@@ -198,7 +202,7 @@ handle_sub_topic_config() {
 	set_sub_topic "$sub_topic"
 	set_previous_sub_topic "$sub_topic"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_sub_topic_config
 
@@ -213,6 +217,6 @@ handle_user_config() {
 	set_user "$user"
 	set_previous_user "$user"
 
-	snapctl restart theengs-gateway
+	restart_gateway_if_running
 }
 handle_user_config
