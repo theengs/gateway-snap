@@ -3,7 +3,7 @@
 . "$SNAP/bin/management-script"
 
 restart_gateway_if_running() {
-	snap services theengs-gateway | grep inactive || snapctl restart theengs-gateway
+	LANG=C snap services theengs-gateway | grep inactive || snapctl restart theengs-gateway
 }
 
 handle_adapter_config() {
