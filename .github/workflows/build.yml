@@ -4,11 +4,21 @@ on: push  # yamllint disable-line rule:truthy
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform:
+          - amd64
+          - arm64
+          - armhf
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+      - name: Configure Qemu support
+        uses: docker/setup-qemu-action@v1
       - name: Build snap
-        uses: snapcore/action-build@v1
+        uses: diddlesnaps/snapcraft-multiarch-action@v1
+        with:
+          architecture: ${{ matrix.platform }}
         id: snapcraft
       - name: Check snap for errors
         run: |
@@ -16,3 +26,9 @@ jobs:
           snap-review ${{ steps.snapcraft.outputs.snap }}
       - name: Install snap
         run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
+        if: matrix.platform == 'amd64'
+      - name: Save snap as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: snap
+          path: ${{ steps.snapcraft.outputs.snap }}
