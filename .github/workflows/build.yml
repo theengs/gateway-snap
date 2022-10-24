@@ -14,9 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Configure Qemu support
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v2
       - name: Build snap
-        uses: diddlesnaps/snapcraft-multiarch-action@v1
+        uses: diddlesnaps/snapcraft-multiarch-action@v1.5.0
         with:
           architecture: ${{ matrix.platform }}
         id: snapcraft
