@@ -24,6 +24,8 @@ DISCOVERY_TOPIC="$(discovery_topic)"
 export DISCOVERY_TOPIC
 DISCOVERY="$(discovery)"
 export DISCOVERY
+HASS_DISCOVERY="$(hass_discovery)"
+export HASS_DISCOVERY
 DISCOVERY_DEVICE_NAME="$(discovery_device_name)"
 export DISCOVERY_DEVICE_NAME
 DISCOVERY_FILTER="$(discovery_filter)"
@@ -31,4 +33,4 @@ export DISCOVERY_FILTER
 ADAPTER="$(adapter)"
 export ADAPTER
 
-"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER"
+"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dh "$HASS_DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER"
