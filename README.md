@@ -49,6 +49,7 @@ $ snap get -d theengs-gateway
         },
         "ha": {
                 "discovery": 1,
+                "hass-discovery": 1,
                 "discovery-device-name": "TheengsGateway",
                 "discovery-filter": "IBEACON GAEN MS-CDP",
                 "discovery-topic": "homeassistant/sensor"
