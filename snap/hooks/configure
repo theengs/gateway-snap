@@ -66,6 +66,21 @@ handle_discovery_config() {
 }
 handle_discovery_config
 
+handle_hass_discovery_config() {
+	hass_discovery="$(hass_discovery)"
+	previous_hass_discovery="$(previous_hass_discovery)"
+
+	if [ "$hass_discovery" = "$previous_hass_discovery" ]; then
+		return 0
+	fi
+
+	set_hass_discovery "$hass_discovery"
+	set_previous_hass_discovery "$hass_discovery"
+
+	restart_gateway_if_running
+}
+handle_hass_discovery_config
+
 handle_discovery_device_name_config() {
 	discovery_device_name="$(discovery_device_name)"
 	previous_discovery_device_name="$(previous_discovery_device_name)"

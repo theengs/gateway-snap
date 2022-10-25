@@ -4,6 +4,7 @@ DEFAULT_ADAPTER=""
 DEFAULT_SCAN_DUR="5"
 DEFAULT_TIME_BETWEEN="5"
 DEFAULT_DISCOVERY="1"
+DEFAULT_HASS_DISCOVERY="1"
 DEFAULT_DISCOVERY_DEVICE_NAME="TheengsGateway"
 DEFAULT_DISCOVERY_FILTER="IBEACON GAEN MS-CDP"
 DEFAULT_DISCOVERY_TOPIC="homeassistant/sensor"
@@ -12,7 +13,7 @@ DEFAULT_LOG_LEVEL="WARNING"
 DEFAULT_PASS=""
 DEFAULT_PORT="1883"
 DEFAULT_PUB_TOPIC="home/TheengsGateway/BTtoMQTT"
-DEFAULT_SUB_TOPIC="home/TheengsGateway/+"
+DEFAULT_SUB_TOPIC="home/+/BTtoMQTT/undecoded"
 DEFAULT_USER=""
 
 # ADAPTER
@@ -107,6 +108,28 @@ set_previous_discovery() {
 	snapctl set private.ha.discovery="$1"
 }
 
+# HASS_DISCOVERY
+hass_discovery() {
+	ha_hass_discovery="$(snapctl get ha.hass-discovery)"
+	if [ -z "$ha_hass_discovery" ]; then
+		ha_hass_discovery="$DEFAULT_HASS_DISCOVERY"
+		set_hass_discovery "$ha_hass_discovery"
+		set_previous_hass_discovery "$ha_hass_discovery"
+	fi
+	echo "$ha_hass_discovery"
+}
+
+set_hass_discovery() {
+	snapctl set ha.hass-discovery="$1"
+}
+
+previous_hass_discovery() {
+	snapctl get private.ha.hass-discovery
+}
+
+set_previous_hass_discovery() {
+	snapctl set private.ha.hass-discovery="$1"
+}
 # DISCOVERY_DEVICE_NAME
 discovery_device_name() {
 	ha_discovery_device_name="$(snapctl get ha.discovery-device-name)"
