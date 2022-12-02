@@ -10,7 +10,7 @@ description: |
     LYWSDCGQ, and Mi Flora. It translates these data into a readable JSON
     format and pushes those to an MQTT broker.
 icon: snap/local/logo-Theengs.png
-version: 0.6.0
+version: 0.6.5
 license: GPL-3.0
 contact: koen@vervloesem.eu
 website: https://github.com/theengs/gateway-snap
@@ -28,7 +28,7 @@ parts:
   theengs-gateway:
     plugin: python
     source: https://github.com/theengs/gateway.git
-    source-tag: v0.6.0
+    source-tag: v0.6.5
     override-pull: |
       craftctl default
       sed -i "s/version_tag/$SNAPCRAFT_PROJECT_VERSION/g" $CRAFT_PART_SRC/setup.py
