@@ -32,12 +32,8 @@ parts:
     override-pull: |
       craftctl default
       sed -i "s/version_tag/$SNAPCRAFT_PROJECT_VERSION/g" $CRAFT_PART_SRC/setup.py
-      rm $SNAPCRAFT_PART_SRC/pyproject.toml  # Use pre-built system-site requirements
     build-packages:
       - build-essential
-      - python3-skbuild
-    build-environment:
-      - PARTS_PYTHON_VENV_ARGS: "--system-site-packages"
   scripts:
     plugin: dump
     source: scripts
