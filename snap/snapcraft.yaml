@@ -36,6 +36,9 @@ parts:
     build-packages:
       - build-essential
     python-packages:
+      - pip
+      - setuptools
+      - wheel
       - scikit-build
   scripts:
     plugin: dump
