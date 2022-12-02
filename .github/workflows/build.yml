@@ -19,6 +19,7 @@ jobs:
         uses: diddlesnaps/snapcraft-multiarch-action@v1.7.0
         with:
           architecture: ${{ matrix.platform }}
+          snapcraft-args: --verbose
         id: snapcraft
       - name: Check snap for errors
         run: |
