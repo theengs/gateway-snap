@@ -3,7 +3,7 @@ name: Build
 on: push  # yamllint disable-line rule:truthy
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         platform:
@@ -16,17 +16,18 @@ jobs:
       - name: Configure Qemu support
         uses: docker/setup-qemu-action@v2
       - name: Build snap
-        uses: diddlesnaps/snapcraft-multiarch-action@v1.5.0
+        uses: diddlesnaps/snapcraft-multiarch-action@v1.7.0
         with:
           architecture: ${{ matrix.platform }}
+          snapcraft-args: --verbose
         id: snapcraft
-      - name: Check snap for errors
-        run: |
-          sudo snap install review-tools
-          snap-review ${{ steps.snapcraft.outputs.snap }}
-      - name: Install snap
-        run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
-        if: matrix.platform == 'amd64'
+#      - name: Check snap for errors
+#        run: |
+#          sudo snap install review-tools
+#          snap-review ${{ steps.snapcraft.outputs.snap }}
+#      - name: Install snap
+#        run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
+#        if: matrix.platform == 'amd64'
       - name: Save snap as artifact
         uses: actions/upload-artifact@v2
         with:
