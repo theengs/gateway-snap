@@ -24,7 +24,7 @@ jobs:
       - name: Check snap for errors
         run: |
           sudo snap install review-tools
-          snap-review ${{ steps.snapcraft.outputs.snap }}
+          sudo snap-review ${{ steps.snapcraft.outputs.snap }}
       - name: Install snap
         run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
         if: matrix.platform == 'amd64'
