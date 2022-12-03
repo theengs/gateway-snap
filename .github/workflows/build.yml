@@ -21,17 +21,13 @@ jobs:
           architecture: ${{ matrix.platform }}
           snapcraft-args: --verbose
         id: snapcraft
-      - name: Bind mount tmp directory to home
-        run: |
-          mkdir /home/runner/tmp
-          sudo mount --bind /tmp /home/runner/tmp/
-      - name: Check snap for errors
-        run: |
-          sudo snap install review-tools
-          snap-review ${{ steps.snapcraft.outputs.snap }}
-      - name: Install snap
-        run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
-        if: matrix.platform == 'amd64'
+#      - name: Check snap for errors
+#        run: |
+#          sudo snap install review-tools
+#          snap-review ${{ steps.snapcraft.outputs.snap }}
+#      - name: Install snap
+#        run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
+#        if: matrix.platform == 'amd64'
       - name: Save snap as artifact
         uses: actions/upload-artifact@v2
         with:
