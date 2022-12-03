@@ -35,11 +35,13 @@ parts:
       rm $SNAPCRAFT_PART_SRC/pyproject.toml  # Use pre-built system-site requirements
     build-packages:
       - build-essential
-    python-packages:
+      - python3-skbuild     # Use scikit-build and setuptools from repo
+      - python3-setuptools  # as they are a combination that is known working
+    build-environment:
+      - PARTS_PYTHON_VENV_ARGS: "--system-site-packages"  # Use the above packages
+    python-packages:  # Replace default value [pip, setuptools, wheel]
       - pip
-      - setuptools
       - wheel
-      - scikit-build
   scripts:
     plugin: dump
     source: scripts
