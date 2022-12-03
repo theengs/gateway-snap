@@ -3,7 +3,7 @@ name: Build
 on: push  # yamllint disable-line rule:truthy
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         platform:
@@ -21,12 +21,16 @@ jobs:
           architecture: ${{ matrix.platform }}
           snapcraft-args: --verbose
         id: snapcraft
+      - name: Bind mount tmp directory to home
+        run: |
+          mkdir /home/runner/tmp
+          sudo mount --bind /tmp /home/runner/tmp/
       - name: Check snap for errors
         run: |
-          snap install review-tools
+          sudo snap install review-tools
           snap-review ${{ steps.snapcraft.outputs.snap }}
       - name: Install snap
-        run: snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
+        run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
         if: matrix.platform == 'amd64'
       - name: Save snap as artifact
         uses: actions/upload-artifact@v2
