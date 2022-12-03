@@ -23,10 +23,10 @@ jobs:
         id: snapcraft
       - name: Check snap for errors
         run: |
-          sudo snap install review-tools
-          sudo snap-review ${{ steps.snapcraft.outputs.snap }}
+          snap install review-tools
+          snap-review ${{ steps.snapcraft.outputs.snap }}
       - name: Install snap
-        run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
+        run: snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
         if: matrix.platform == 'amd64'
       - name: Save snap as artifact
         uses: actions/upload-artifact@v2
