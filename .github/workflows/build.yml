@@ -21,10 +21,10 @@ jobs:
           architecture: ${{ matrix.platform }}
           snapcraft-args: --verbose
         id: snapcraft
-      - name: Check snap for errors
-        run: |
-          sudo snap install review-tools
-          sudo snap-review ${{ steps.snapcraft.outputs.snap }}
+#      - name: Check snap for errors
+#        run: |
+#          sudo snap install review-tools
+#          sudo snap-review ${{ steps.snapcraft.outputs.snap }}
       - name: Install snap
         run: sudo snap install --dangerous ${{ steps.snapcraft.outputs.snap }}
         if: matrix.platform == 'amd64'
