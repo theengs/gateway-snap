@@ -2,6 +2,9 @@
 [![Check status](https://github.com/theengs/gateway-snap/workflows/Check/badge.svg)](https://github.com/theengs/gateway-snap/actions)
 [![GitHub license](https://img.shields.io/github/license/theengs/gateway-snap.svg)](https://github.com/theengs/gateway-snap/blob/development/LICENSE)
 [![theengs-gateway](https://snapcraft.io/theengs-gateway/badge.svg)](https://snapcraft.io/theengs-gateway)
+![amd64](https://img.shields.io/badge/amd64-yes-green.svg)
+![arm64](https://img.shields.io/badge/arm64-yes-green.svg)
+![armhf](https://img.shields.io/badge/armhf-yes-green.svg)
 
 # Theengs Gateway Snap
 
