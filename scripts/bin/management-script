@@ -407,4 +407,3 @@ previous_time_format() {
 set_previous_time_format() {
 	snapctl set private.time-sync.format="$1"
 }
-
