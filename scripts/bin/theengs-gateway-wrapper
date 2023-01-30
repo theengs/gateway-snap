@@ -32,5 +32,9 @@ DISCOVERY_FILTER="$(discovery_filter)"
 export DISCOVERY_FILTER
 ADAPTER="$(adapter)"
 export ADAPTER
+TIME_SYNC="$(time_sync)"
+export TIME_SYNC
+TIME_FORMAT="$(time_format)"
+export TIME_FORMAT
 
-"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dh "$HASS_DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER"
+"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dh "$HASS_DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER" -ts "$TIME_SYNC" -tf "$TIME_FORMAT"

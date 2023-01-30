@@ -15,6 +15,8 @@ DEFAULT_PORT="1883"
 DEFAULT_PUB_TOPIC="home/TheengsGateway/BTtoMQTT"
 DEFAULT_SUB_TOPIC="home/+/BTtoMQTT/undecoded"
 DEFAULT_USER=""
+DEFAULT_TIME_SYNC=""
+DEFAULT_TIME_FORMAT="0"
 
 # ADAPTER
 adapter() {
@@ -359,3 +361,50 @@ previous_user() {
 set_previous_user() {
 	snapctl set private.mqtt.user="$1"
 }
+
+# TIME_SYNC
+time_sync() {
+	time_sync_addresses="$(snapctl get time-sync.addresses)"
+	if [ -z "$time_sync_addresses" ]; then
+		time_sync_addresses="$DEFAULT_TIME_SYNC"
+		set_time_sync "$time_sync_addresses"
+		set_previous_time_sync_addresses "$time_sync_addresses"
+	fi
+	echo "$time_sync_addresses"
+}
+
+set_time_sync() {
+	snapctl set time-sync.addresses="$1"
+}
+
+previous_time_sync() {
+	snapctl get private.time-sync.addresses
+}
+
+set_previous_time_sync() {
+	snapctl set private.time-sync.addresses="$1"
+}
+
+# TIME_FORMAT
+time_format() {
+	time_sync_format="$(snapctl get time-sync.format)"
+	if [ -z "$time_sync_format" ]; then
+		time_sync_format="$DEFAULT_TIME_FORMAT"
+		set_time_format "$time_sync_format"
+		set_previous_time_format "$time_sync_format"
+	fi
+	echo "$time_sync_format"
+}
+
+set_time_format() {
+	snapctl set time-sync.format="$1"
+}
+
+previous_time_format() {
+	snapctl get private.time-sync.format
+}
+
+set_previous_time_format() {
+	snapctl set private.time-sync.format="$1"
+}
+
