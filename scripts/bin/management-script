@@ -368,7 +368,7 @@ time_sync() {
 	if [ -z "$time_sync_addresses" ]; then
 		time_sync_addresses="$DEFAULT_TIME_SYNC"
 		set_time_sync "$time_sync_addresses"
-		set_previous_time_sync_addresses "$time_sync_addresses"
+		set_previous_time_sync "$time_sync_addresses"
 	fi
 	echo "$time_sync_addresses"
 }

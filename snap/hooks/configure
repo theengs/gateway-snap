@@ -264,4 +264,4 @@ handle_time_format_config() {
 
 	restart_gateway_if_running
 }
-handle_time_format
+handle_time_format_config
