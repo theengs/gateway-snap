@@ -235,3 +235,33 @@ handle_user_config() {
 	restart_gateway_if_running
 }
 handle_user_config
+
+handle_time_sync_config() {
+	time_sync="$(time_sync)"
+	previous_time_sync="$(previous_time_sync)"
+
+	if [ "$time_sync" = "$previous_time_sync" ]; then
+		return 0
+	fi
+
+	set_time_sync "$time_sync"
+	set_previous_time_sync "$time_sync"
+
+	restart_gateway_if_running
+}
+handle_time_sync_config
+
+handle_time_format_config() {
+	time_format="$(time_format)"
+	previous_time_format="$(previous_time_format)"
+
+	if [ "$time_format" = "$previous_time_format" ]; then
+		return 0
+	fi
+
+	set_time_format "$time_format"
+	set_previous_time_format "$time_format"
+
+	restart_gateway_if_running
+}
+handle_time_format_config
