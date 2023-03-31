@@ -63,12 +63,17 @@ $ snap get -d theengs-gateway
                 "pass": "",
                 "port": 1883,
                 "pub-topic": "home/TheengsGateway/BTtoMQTT",
+                "lwt-topic": "home/TheengsGateway/LWT",
                 "sub-topic": "home/+/BTtoMQTT/undecoded",
                 "user": ""
-        }
+        },
         "time-sync": {
                 "addresses": "",
                 "format": 0
+        },
+        "presence": {
+                "topic": "home/TheengsGateway/presence",
+                "enable": 0
         }
 }
 ```

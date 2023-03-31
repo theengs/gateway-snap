@@ -265,3 +265,48 @@ handle_time_format_config() {
 	restart_gateway_if_running
 }
 handle_time_format_config
+
+handle_presence_topic_config() {
+	presence_topic="$(presence_topic)"
+	previous_presence_topic="$(previous_presence_topic)"
+
+	if [ "$presence_topic" = "$previous_presence_topic" ]; then
+		return 0
+	fi
+
+	set_presence_topic "$presence_topic"
+	set_previous_presence_topic "$presence_topic"
+
+	restart_gateway_if_running
+}
+handle_presence_topic_config
+
+handle_presence_config() {
+	presence="$(presence)"
+	previous_presence="$(previous_presence)"
+
+	if [ "$presence" = "$previous_presence" ]; then
+		return 0
+	fi
+
+	set_presence "$presence"
+	set_previous_presence "$presence"
+
+	restart_gateway_if_running
+}
+handle_presence_topic_config
+
+handle_lwt_topic_config() {
+	lwt_topic="$(lwt_topic)"
+	previous_lwt_topic="$(previous_lwt_topic)"
+
+	if [ "$lwt_topic" = "$previous_lwt_topic" ]; then
+		return 0
+	fi
+
+	set_lwt_topic "$lwt_topic"
+	set_previous_lwt_topic "$lwt_topic"
+
+	restart_gateway_if_running
+}
+handle_lwt_topic_config
