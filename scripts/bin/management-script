@@ -17,6 +17,9 @@ DEFAULT_SUB_TOPIC="home/+/BTtoMQTT/undecoded"
 DEFAULT_USER=""
 DEFAULT_TIME_SYNC=""
 DEFAULT_TIME_FORMAT="0"
+DEFAULT_PRESENCE_TOPIC="home/TheengsGateway/presence"
+DEFAULT_PRESENCE="0"
+DEFAULT_LWT_TOPIC="home/TheengsGateway/LWT"
 
 # ADAPTER
 adapter() {
@@ -406,4 +409,73 @@ previous_time_format() {
 
 set_previous_time_format() {
 	snapctl set private.time-sync.format="$1"
+}
+
+# PRESENCE_TOPIC
+presence_topic() {
+	presence_mqtt_topic="$(snapctl get presence.topic)"
+	if [ -z "$presence_mqtt_topic" ]; then
+		presence_mqtt_topic="$DEFAULT_PRESENCE_TOPIC"
+		set_presence_topic "$presence_mqtt_topic"
+		set_previous_presence_topic "$presence_mqtt_topic"
+	fi
+	echo "$presence_mqtt_topic"
+}
+
+set_presence_topic() {
+	snapctl set presence.topic="$1"
+}
+
+previous_presence_topic() {
+	snapctl get private.presence.topic
+}
+
+set_previous_presence_topic() {
+	snapctl set private.presence.topic="$1"
+}
+
+# PRESENCE
+presence() {
+	presence_enable="$(snapctl get presence.enable)"
+	if [ -z "$presence_enable" ]; then
+		presence_enable="$DEFAULT_PRESENCE"
+		set_presence "$presence_enable"
+		set_previous_presence "$presence_enable"
+	fi
+	echo "$presence_enable"
+}
+
+set_presence() {
+	snapctl set presence.enable="$1"
+}
+
+previous_presence() {
+	snapctl get private.presence.enable
+}
+
+set_previous_presence() {
+	snapctl set private.presence.enable="$1"
+}
+
+# LWT_TOPIC
+lwt_topic() {
+	mqtt_lwt_topic="$(snapctl get mqtt.lwt-topic)"
+	if [ -z "$mqtt_lwt_topic" ]; then
+		mqtt_lwt_topic="$DEFAULT_LWT_TOPIC"
+		set_lwt_topic "$mqtt_lwt_topic"
+		set_previous_lwt_topic "$mqtt_lwt_topic"
+	fi
+	echo "$mqtt_lwt_topic"
+}
+
+set_lwt_topic() {
+	snapctl set mqtt.lwt-topic="$1"
+}
+
+previous_lwt_topic() {
+	snapctl get private.mqtt.lwt-topic
+}
+
+set_previous_lwt_topic() {
+	snapctl set private.mqtt.lwt-topic="$1"
 }

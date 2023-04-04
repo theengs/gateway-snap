@@ -36,5 +36,11 @@ TIME_SYNC="$(time_sync)"
 export TIME_SYNC
 TIME_FORMAT="$(time_format)"
 export TIME_FORMAT
+PRESENCE_TOPIC="$(presence_topic)"
+export PRESENCE_TOPIC
+PRESENCE="$(presence)"
+export PRESENCE
+LWT_TOPIC="$(lwt_topic)"
+export LWT_TOPIC
 
-"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dh "$HASS_DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER" -ts "$TIME_SYNC" -tf "$TIME_FORMAT"
+"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dh "$HASS_DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER" -ts "$TIME_SYNC" -tf "$TIME_FORMAT" -prt "$PRESENCE_TOPIC" -pr "$PRESENCE" -Lt "$LWT_TOPIC"
