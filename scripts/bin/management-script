@@ -20,6 +20,7 @@ DEFAULT_TIME_FORMAT="0"
 DEFAULT_PRESENCE_TOPIC="home/TheengsGateway/presence"
 DEFAULT_PRESENCE="0"
 DEFAULT_LWT_TOPIC="home/TheengsGateway/LWT"
+DEFAULT_PUBLISH_ADVDATA="0"
 
 # ADAPTER
 adapter() {
@@ -478,4 +479,27 @@ previous_lwt_topic() {
 
 set_previous_lwt_topic() {
 	snapctl set private.mqtt.lwt-topic="$1"
+}
+
+# PUBLISH_ADVDATA
+publish_advdata() {
+	publish_advdata_enable="$(snapctl get mqtt.publish-advdata)"
+	if [ -z "$publish_advdata_enable" ]; then
+		publish_advdata_enable="$DEFAULT_PUBLISH_ADVDATA"
+		set_publish_advdata "$publish_advdata_enable"
+		set_previous_publish_advdata "$publish_advdata_enable"
+	fi
+	echo "$publish_advdata_enable"
+}
+
+set_publish_advdata() {
+	snapctl set mqtt.publish-advdata="$1"
+}
+
+previous_publish_advdata() {
+	snapctl get private.mqtt.publish-advdata
+}
+
+set_previous_publish_advdata() {
+	snapctl set private.mqtt.publish-advdata="$1"
 }
