@@ -294,7 +294,7 @@ handle_presence_config() {
 
 	restart_gateway_if_running
 }
-handle_presence_topic_config
+handle_presence_config
 
 handle_lwt_topic_config() {
 	lwt_topic="$(lwt_topic)"
@@ -310,3 +310,18 @@ handle_lwt_topic_config() {
 	restart_gateway_if_running
 }
 handle_lwt_topic_config
+
+handle_publish_advdata_config() {
+	publish_advdata="$(publish_advdata)"
+	previous_publish_advdata="$(previous_publish_advdata)"
+
+	if [ "$publish_advdata" = "$previous_publish_advdata" ]; then
+		return 0
+	fi
+
+	set_publish_advdata "$publish_advdata"
+	set_previous_publish_advdata "$publish_advdata"
+
+	restart_gateway_if_running
+}
+handle_publish_advdata_config
