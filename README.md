@@ -57,7 +57,7 @@ $ snap get -d theengs-gateway
                 "discovery-topic": "homeassistant/sensor",
                 "hass-discovery": 1
         },
-        "log-level": "WARNING",
+        "log-level": "INFO",
         "mqtt": {
                 "host": "",
                 "pass": "",
