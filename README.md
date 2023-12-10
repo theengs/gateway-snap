@@ -45,6 +45,7 @@ You can show the snap's configuration with:
 ```shell
 $ snap get -d theengs-gateway
 {
+        "bindkeys": "",
         "ble": {
                 "adapter": "",
                 "scan-duration": 5,
@@ -57,8 +58,11 @@ $ snap get -d theengs-gateway
                 "discovery-topic": "homeassistant/sensor",
                 "hass-discovery": 1
         },
+        "identities": "",
         "log-level": "INFO",
         "mqtt": {
+                "enable-tls": 0,
+                "enable-ws": 0,
                 "host": "",
                 "pass": "",
                 "port": 1883,
@@ -91,4 +95,10 @@ After changing the configuration, Theengs Gateway should now run as a service. I
 
 ```shell
 snap start --enable theengs-gateway
+```
+
+Have a look at the snap's logs to troubleshoot problems:
+
+```shell
+snap logs theengs-gateway -f
 ```

@@ -10,7 +10,7 @@ description: |
     LYWSDCGQ, and Mi Flora. It translates these data into a readable JSON
     format and pushes those to an MQTT broker.
 icon: snap/local/logo-Theengs.png
-version: 1.1.0
+version: 1.2.0
 license: GPL-3.0
 contact: koen@vervloesem.eu
 website: https://github.com/theengs/gateway-snap
@@ -28,16 +28,18 @@ parts:
   theengs-decoder:
     plugin: python
     source: https://github.com/theengs/decoder.git
-    source-tag: v1.5.0
+    source-tag: v1.6.4
+    source-subdir: python
     override-pull: |
       craftctl default
-      sed -i "s/version_tag/1.5.0/g" $CRAFT_PART_SRC/setup.py
-      sed -i "s/    shutil.rmtree('TheengsDecoder.egg-info')//g" $CRAFT_PART_SRC/setup.py
-      rm $SNAPCRAFT_PART_SRC/pyproject.toml  # Use pre-built system-site requirements
+      cd python
+      cp -r ../src .
+      rm pyproject.toml  # Use pre-built system-site requirements
     build-packages:
       - build-essential
-      - python3-skbuild     # Use scikit-build and setuptools from repo
-      - python3-setuptools  # as they are a combination that is known working
+      - python3-skbuild        # Use scikit-build
+      - python3-setuptools     # and setuptools from Ubuntu repository
+      - python3-setuptools-scm # as they are a combination that is known working
     build-environment:
       - PARTS_PYTHON_VENV_ARGS: "--system-site-packages"  # Use the above packages
     python-packages:  # Replace default value [pip, setuptools, wheel]
@@ -45,17 +47,17 @@ parts:
       - wheel
     stage:
       - lib/python3.10/site-packages/TheengsDecoder/*
-      - lib/python3.10/site-packages/TheengsDecoder-1.5.0.dist-info/*
   theengs-gateway:
     after:
       - theengs-decoder
     plugin: python
     source: https://github.com/theengs/gateway.git
-    source-tag: v1.1.0
+    source-tag: v1.2.0
     override-pull: |
       craftctl default
-      sed -i "s/version_tag/$SNAPCRAFT_PROJECT_VERSION/g" $CRAFT_PART_SRC/setup.py
-      sed -i 's/        "TheengsDecoder>=1.5.0",/"importlib_metadata",/g' $CRAFT_PART_SRC/setup.py
+      # Don't build Theengs Decoder as a dependency,
+      # as we've already built it in a separate part.
+      sed -i 's/        "TheengsDecoder>=[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*",//g' $CRAFT_PART_SRC/setup.py
   scripts:
     plugin: dump
     source: scripts
