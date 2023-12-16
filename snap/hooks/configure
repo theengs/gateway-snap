@@ -325,3 +325,63 @@ handle_publish_advdata_config() {
 	restart_gateway_if_running
 }
 handle_publish_advdata_config
+
+handle_enable_tls_config() {
+	enable_tls="$(enable_tls)"
+	previous_enable_tls="$(previous_enable_tls)"
+
+	if [ "$enable_tls" = "$previous_enable_tls" ]; then
+		return 0
+	fi
+
+	set_enable_tls "$enable_tls"
+	set_previous_enable_tls "$enable_tls"
+
+	restart_gateway_if_running
+}
+handle_enable_tls_config
+
+handle_enable_ws_config() {
+	enable_ws="$(enable_ws)"
+	previous_enable_ws="$(previous_enable_ws)"
+
+	if [ "$enable_ws" = "$previous_enable_ws" ]; then
+		return 0
+	fi
+
+	set_enable_ws "$enable_ws"
+	set_previous_enable_ws "$enable_ws"
+
+	restart_gateway_if_running
+}
+handle_enable_ws_config
+
+handle_bindkeys_config() {
+	bindkeys="$(bindkeys)"
+	previous_bindkeys="$(previous_bindkeys)"
+
+	if [ "$bindkeys" = "$previous_bindkeys" ]; then
+		return 0
+	fi
+
+	set_bindkeys "$bindkeys"
+	set_previous_bindkeys "$bindkeys"
+
+	restart_gateway_if_running
+}
+handle_bindkeys_config
+
+handle_identities_config() {
+	identities="$(identities)"
+	previous_identities="$(previous_identities)"
+
+	if [ "$identities" = "$previous_identities" ]; then
+		return 0
+	fi
+
+	set_identities "$identities"
+	set_previous_identities "$identities"
+
+	restart_gateway_if_running
+}
+handle_identities_config

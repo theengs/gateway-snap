@@ -44,5 +44,13 @@ LWT_TOPIC="$(lwt_topic)"
 export LWT_TOPIC
 PUBLISH_ADVDATA="$(publish_advdata)"
 export PUBLISH_ADVDATA
+ENABLE_TLS="$(enable_tls)"
+export ENABLE_TLS
+ENABLE_WS="$(enable_ws)"
+export ENABLE_WS
+BINDKEYS="$(bindkeys)"
+export BINDKEYS
+IDENTITIES="$(identities)"
+export IDENTITIES
 
-"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dh "$HASS_DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER" -ts "$TIME_SYNC" -tf "$TIME_FORMAT" -prt "$PRESENCE_TOPIC" -pr "$PRESENCE" -Lt "$LWT_TOPIC" -padv "$PUBLISH_ADVDATA"
+"$SNAP/bin/TheengsGateway" -H "$HOST" -P "$PORT" -u "$USER" -p "$PASS" -pt "$PUB_TOPIC" -st "$SUB_TOPIC" -sd "$SCAN_DUR" -tb "$TIME_BETWEEN" -ll "$LOG_LEVEL" -Dt "$DISCOVERY_TOPIC" -D "$DISCOVERY" -Dh "$HASS_DISCOVERY" -Dn "$DISCOVERY_DEVICE_NAME" -Df "$DISCOVERY_FILTER" -a "$ADAPTER" -ts "$TIME_SYNC" -tf "$TIME_FORMAT" -prt "$PRESENCE_TOPIC" -pr "$PRESENCE" -Lt "$LWT_TOPIC" -padv "$PUBLISH_ADVDATA" -tls "$ENABLE_TLS" -ws "$ENABLE_WS" -bk "$BINDKEYS" -id "$IDENTITIES"

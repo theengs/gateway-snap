@@ -21,6 +21,10 @@ DEFAULT_PRESENCE_TOPIC="home/TheengsGateway/presence"
 DEFAULT_PRESENCE="0"
 DEFAULT_LWT_TOPIC="home/TheengsGateway/LWT"
 DEFAULT_PUBLISH_ADVDATA="0"
+DEFAULT_ENABLE_TLS="0"
+DEFAULT_ENABLE_WS="0"
+DEFAULT_BINDKEYS=""
+DEFAULT_IDENTITIES=""
 
 # ADAPTER
 adapter() {
@@ -502,4 +506,96 @@ previous_publish_advdata() {
 
 set_previous_publish_advdata() {
 	snapctl set private.mqtt.publish-advdata="$1"
+}
+
+# ENABLE_TLS
+enable_tls() {
+	enable_tls_enable="$(snapctl get mqtt.enable-tls)"
+	if [ -z "$enable_tls_enable" ]; then
+		enable_tls_enable="$DEFAULT_ENABLE_TLS"
+		set_enable_tls "$enable_tls_enable"
+		set_previous_enable_tls "$enable_tls_enable"
+	fi
+	echo "$enable_tls_enable"
+}
+
+set_enable_tls() {
+	snapctl set mqtt.enable-tls="$1"
+}
+
+previous_enable_tls() {
+	snapctl get private.mqtt.enable-tls
+}
+
+set_previous_enable_tls() {
+	snapctl set private.mqtt.enable-tls="$1"
+}
+
+# ENABLE_WS
+enable_ws() {
+	enable_ws_enable="$(snapctl get mqtt.enable-ws)"
+	if [ -z "$enable_ws_enable" ]; then
+		enable_ws_enable="$DEFAULT_ENABLE_WS"
+		set_enable_ws "$enable_ws_enable"
+		set_previous_enable_ws "$enable_ws_enable"
+	fi
+	echo "$enable_ws_enable"
+}
+
+set_enable_ws() {
+	snapctl set mqtt.enable-ws="$1"
+}
+
+previous_enable_ws() {
+	snapctl get private.mqtt.enable-ws
+}
+
+set_previous_enable_ws() {
+	snapctl set private.mqtt.enable-ws="$1"
+}
+
+# BINDKEYS
+bindkeys() {
+	bindkeys_addresses="$(snapctl get bindkeys)"
+	if [ -z "$bindkeys_addresses" ]; then
+		bindkeys_addresses="$DEFAULT_BINDKEYS"
+		set_bindkeys "$bindkeys_addresses"
+		set_previous_bindkeys "$bindkeys_addresses"
+	fi
+	echo "$bindkeys_addresses"
+}
+
+set_bindkeys() {
+	snapctl set bindkeys="$1"
+}
+
+previous_bindkeys() {
+	snapctl get private.bindkeys
+}
+
+set_previous_bindkeys() {
+	snapctl set private.bindkeys="$1"
+}
+
+# IDENTITIES
+identities() {
+	identities_addresses="$(snapctl get identities)"
+	if [ -z "$identities_addresses" ]; then
+		identities_addresses="$DEFAULT_IDENTITIES"
+		set_identities "$identities_addresses"
+		set_previous_identities "$identities_addresses"
+	fi
+	echo "$identities_addresses"
+}
+
+set_identities() {
+	snapctl set identities="$1"
+}
+
+previous_identities() {
+	snapctl get private.identities
+}
+
+set_previous_identities() {
+	snapctl set private.identities="$1"
 }
