@@ -48,6 +48,7 @@ $ snap get -d theengs-gateway
         "bindkeys": "",
         "ble": {
                 "adapter": "",
+                "enable": 1,
                 "scan-duration": 5,
                 "time-between": 5
         },
@@ -79,7 +80,8 @@ $ snap get -d theengs-gateway
         "presence": {
                 "topic": "home/TheengsGateway/presence",
                 "enable": 0
-        }
+        },
+        "tracker-timeout": 120
 }
 ```
 

@@ -10,7 +10,7 @@ description: |
     LYWSDCGQ, and Mi Flora. It translates these data into a readable JSON
     format and pushes those to an MQTT broker.
 icon: snap/local/logo-Theengs.png
-version: 1.2.0
+version: 1.3.0
 license: GPL-3.0
 contact: koen@vervloesem.eu
 website: https://github.com/theengs/gateway-snap
@@ -28,7 +28,7 @@ parts:
   theengs-decoder:
     plugin: python
     source: https://github.com/theengs/decoder.git
-    source-tag: v1.6.4
+    source-tag: v1.6.8
     source-subdir: python
     override-pull: |
       craftctl default
@@ -52,7 +52,7 @@ parts:
       - theengs-decoder
     plugin: python
     source: https://github.com/theengs/gateway.git
-    source-tag: v1.2.0
+    source-tag: v1.3.0
     override-pull: |
       craftctl default
       # Don't build Theengs Decoder as a dependency,
