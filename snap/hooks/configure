@@ -385,3 +385,33 @@ handle_identities_config() {
 	restart_gateway_if_running
 }
 handle_identities_config
+
+handle_enable_ble_config() {
+	enable_ble="$(enable_ble)"
+	previous_enable_ble="$(previous_enable_ble)"
+
+	if [ "$enable_ble" = "$previous_enable_ble" ]; then
+		return 0
+	fi
+
+	set_enable_ble "$enable_ble"
+	set_previous_enable_ble "$enable_ble"
+
+	restart_gateway_if_running
+}
+handle_enable_ble_config
+
+handle_tracker_timeout_config() {
+	tracker_time="$(tracker_time)"
+	previous_tracker_timeout="$(previous_tracker_timeout)"
+
+	if [ "$tracker_time" = "$previous_tracker_timeout" ]; then
+		return 0
+	fi
+
+	set_tracker_timeout "$tracker_time"
+	set_previous_tracker_timeout "$tracker_time"
+
+	restart_gateway_if_running
+}
+handle_tracker_timeout_config

@@ -25,6 +25,8 @@ DEFAULT_ENABLE_TLS="0"
 DEFAULT_ENABLE_WS="0"
 DEFAULT_BINDKEYS=""
 DEFAULT_IDENTITIES=""
+DEFAULT_ENABLE_BLE="1"
+DEFAULT_TRACKER_TIMEOUT="120"
 
 # ADAPTER
 adapter() {
@@ -598,4 +600,50 @@ previous_identities() {
 
 set_previous_identities() {
 	snapctl set private.identities="$1"
+}
+
+# ENABLE_BLE
+enable_ble() {
+	enable_ble_enable="$(snapctl get ble.enable)"
+	if [ -z "$enable_ble_enable" ]; then
+		enable_ble_enable="$DEFAULT_ENABLE_BLE"
+		set_enable_ble "$enable_ble_enable"
+		set_previous_enable_ble "$enable_ble_enable"
+	fi
+	echo "$enable_ble_enable"
+}
+
+set_enable_ble() {
+	snapctl set ble.enable="$1"
+}
+
+previous_enable_ble() {
+	snapctl get private.ble.enable
+}
+
+set_previous_enable_ble() {
+	snapctl set private.ble.enable="$1"
+}
+
+# TRACKER_TIMEOUT
+tracker_time() {
+	tracker_timeout="$(snapctl get tracker-timeout)"
+	if [ -z "$tracker_timeout" ]; then
+		tracker_timeout="$DEFAULT_TRACKER_TIMEOUT"
+		set_tracker_timeout "$tracker_timeout"
+		set_previous_tracker_timeout "$tracker_timeout"
+	fi
+	echo "$tracker_timeout"
+}
+
+set_tracker_timeout() {
+	snapctl set tracker_timeout="$1"
+}
+
+previous_tracker_timeout() {
+	snapctl get private.tracker-timeout
+}
+
+set_previous_tracker_timeout() {
+	snapctl set private.tracker-timeout="$1"
 }
