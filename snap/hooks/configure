@@ -415,3 +415,18 @@ handle_tracker_timeout_config() {
 	restart_gateway_if_running
 }
 handle_tracker_timeout_config
+
+handle_general_presence_config() {
+	general_presence="$(general_presence)"
+	previous_general_presence="$(previous_general_presence)"
+
+	if [ "$general_presence" = "$previous_general_presence" ]; then
+		return 0
+	fi
+
+	set_general_presence "$general_presence"
+	set_previous_general_presence "$general_presence"
+
+	restart_gateway_if_running
+}
+handle_general_presence_config
