@@ -27,6 +27,7 @@ DEFAULT_BINDKEYS=""
 DEFAULT_IDENTITIES=""
 DEFAULT_ENABLE_BLE="1"
 DEFAULT_TRACKER_TIMEOUT="120"
+DEFAULT_GENERAL_PRESENCE="0"
 
 # ADAPTER
 adapter() {
@@ -646,4 +647,27 @@ previous_tracker_timeout() {
 
 set_previous_tracker_timeout() {
 	snapctl set private.tracker-timeout="$1"
+}
+
+# GENERAL PRESENCE
+general_presence() {
+	general_presence_enable="$(snapctl get general-presence)"
+	if [ -z "$general_presence_enable" ]; then
+		general_presence_enable="$DEFAULT_GENERAL_PRESENCE"
+		set_general_presence "$general_presence_enable"
+		set_previous_general_presence "$general_presence_enable"
+	fi
+	echo "$general_presence_enable"
+}
+
+set_general_presence() {
+	snapctl set general-presence="$1"
+}
+
+previous_general_presence() {
+	snapctl get private.general-presence
+}
+
+set_previous_general_presence() {
+	snapctl set private.general-presence="$1"
 }

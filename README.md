@@ -52,6 +52,7 @@ $ snap get -d theengs-gateway
                 "scan-duration": 5,
                 "time-between": 5
         },
+        "general-presence": 0,
         "ha": {
                 "discovery": 1,
                 "discovery-device-name": "TheengsGateway",
